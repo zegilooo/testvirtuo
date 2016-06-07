@@ -37,7 +37,42 @@ router.route("/vehicle")
             res.json(response);
         });
     });
-
+router.route("/vehicle/:plate/mileage")
+    .get(function(req,res){
+        let response = {};
+        vehicle.find({"plate" : req.params.plate}, "mileage capture_at" ,function(err,data){
+            if(err) {
+                response = {"error" : true,"message" : "Error fetching data : " + err};
+            } else {
+                response =  data;
+            }
+            res.json(response);
+        });
+    });
+router.route("/vehicle/:plate/fuel")
+    .get(function(req,res){
+        let response = {};
+        vehicle.find({"plate" : req.params.plate}, "fuel capture_at" ,function(err,data){
+            if(err) {
+                response = {"error" : true,"message" : "Error fetching data : " + err};
+            } else {
+                response =  data;
+            }
+            res.json(response);
+        });
+    });
+router.route("/vehicle/:plate/coordinates")
+    .get(function(req,res){
+        let response = {};
+        vehicle.find({"plate" : req.params.plate}, "gps capture_at" ,function(err,data){
+            if(err) {
+                response = {"error" : true,"message" : "Error fetching data : " + err};
+            } else {
+                response =  data;
+            }
+            res.json(response);
+        });
+    });
 
 app.use('/',router);
 
