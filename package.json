@@ -1,0 +1,18 @@
+{
+  "name": "testvirtuo",
+  "version": "1.0.0",
+  "description": "testvirtuo",
+  "main": "testvirtuo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gilles Eschenbrenner <zegilooo@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.20",
+    "node-restful": "^0.2.5"
+  }
+}
