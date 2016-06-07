@@ -12,7 +12,7 @@ router.get("/",function(req,res){
     res.json({"error" : false,"message" : "Hello World"});
 });
 
-router.route("/vehicle")
+router.route("/vehicles")
     .get(function(req,res){
         let response = {};
         vehicle.find({},function(err,data){
@@ -24,6 +24,20 @@ router.route("/vehicle")
             res.json(response);
         });
     });
+router.route("/vehicle")
+    .post(function(req,res){
+        let db = new vehicle(req.body);
+        let response = {};
+        db.save(function(err){
+            if(err) {
+                response = {"error" : true,"message" : "Error adding data : " + err};
+            } else {
+                response = {"error" : false,"message" : "Data added"};
+            }
+            res.json(response);
+        });
+    });
+
 
 app.use('/',router);
 
