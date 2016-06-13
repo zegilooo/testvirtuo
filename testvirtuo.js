@@ -4,6 +4,7 @@ const app         =   express();
 const bodyParser  =   require("body-parser");
 const vehicle     =   require("./models/vehicle");
 const router      =   express.Router();
+const infotypes   =   ["fuel","mileage","coordinates"];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
@@ -37,41 +38,22 @@ router.route("/vehicle")
             res.json(response);
         });
     });
-router.route("/vehicle/:plate/mileage")
+router.route("/vehicle/:plate/:infotype")
     .get(function(req,res){
-        let response = {};
-        vehicle.find({"plate" : req.params.plate}, "mileage capture_at" ,function(err,data){
-            if(err) {
-                response = {"error" : true,"message" : "Error fetching data : " + err};
-            } else {
-                response =  data;
-            }
-            res.json(response);
-        });
-    });
-router.route("/vehicle/:plate/fuel")
-    .get(function(req,res){
-        let response = {};
-        vehicle.find({"plate" : req.params.plate}, "fuel capture_at" ,function(err,data){
-            if(err) {
-                response = {"error" : true,"message" : "Error fetching data : " + err};
-            } else {
-                response =  data;
-            }
-            res.json(response);
-        });
-    });
-router.route("/vehicle/:plate/coordinates")
-    .get(function(req,res){
-        let response = {};
-        vehicle.find({"plate" : req.params.plate}, "gps capture_at" ,function(err,data){
-            if(err) {
-                response = {"error" : true,"message" : "Error fetching data : " + err};
-            } else {
-                response =  data;
-            }
-            res.json(response);
-        });
+        let infotype = req.params.infotype;
+        if(infotypes.indexOf(infotype)===-1){
+            res.json({"error" : true,"message" : "Error infotype : " + infotype});
+        }else{
+            let response = {};
+            vehicle.find({"plate" : req.params.plate}, infotype + " capture_at" ,function(err,data){
+                if(err) {
+                    response = {"error" : true,"message" : "Error fetching data : " + err};
+                } else {
+                    response =  data;
+                }
+                res.json(response);
+            });
+        }
     });
 
 app.use('/',router);

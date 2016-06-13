@@ -15,5 +15,4 @@ const vehicleSchema = new mongoose.Schema ({
   },
   "capture_at":  { type: Date, default: Date.now }
 });
-
 module.exports = mongoose.model('vehicle',vehicleSchema,'vehicle');
