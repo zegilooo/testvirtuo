@@ -45,6 +45,7 @@ router.route("/vehicle/:plate/:infotype")
             res.json({"error" : true,"message" : "Error infotype : " + infotype});
         }else{
             let response = {};
+            if (infotype==="coordinates") infotype = "gps";
             vehicle.find({"plate" : req.params.plate}, infotype + " capture_at" ,function(err,data){
                 if(err) {
                     response = {"error" : true,"message" : "Error fetching data : " + err};
