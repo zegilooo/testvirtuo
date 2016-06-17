@@ -1,9 +1,4 @@
-"use strict";
-const mongoose  = require("mongoose");
-
-mongoose.connect('mongodb://localhost:27017/testvirtuo', function(err) {
-    if (err) throw err;
-});
+import mongoose from "mongoose"
 
 const vehicleSchema = new mongoose.Schema ({
   "plate": { type: String, required: true, trim: true },
@@ -14,5 +9,8 @@ const vehicleSchema = new mongoose.Schema ({
     "longitude": Number
   },
   "capture_at":  { type: Date, default: Date.now }
-});
-module.exports = mongoose.model('vehicle',vehicleSchema,'vehicle');
+})
+
+const vehicleModule = mongoose.model('vehicle',vehicleSchema,'vehicle')
+
+export default vehicleModule

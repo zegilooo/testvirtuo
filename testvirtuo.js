@@ -1,63 +1,61 @@
-"use strict";
-const express     =   require("express");
-const app         =   express();
-const bodyParser  =   require("body-parser");
-const vehicle     =   require("./models/vehicle");
-const router      =   express.Router();
-const infotypes   =   ["fuel","mileage","coordinates"];
+import express from "express"
+import bodyParser  from "body-parser"
+import vehicle from "./models/vehicle"
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({"extended" : false}));
+const app         =   express()
+const router      =   express.Router()
 
-router.get("/",function(req,res){
-    res.json({"error" : false,"message" : "Hello World"});
-});
+const infotypes   =   ["fuel","mileage","coordinates"]
+
+app.set('port', process.env.PORT || 3000)
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({"extended" : false}))
 
 router.route("/vehicles")
-    .get(function(req,res){
-        let response = {};
-        vehicle.find({},function(err,data){
+    .get((req,res) => {
+        let response = {}
+        vehicle.find({},(err,data) => {
             if(err) {
-                response = {"error" : true,"message" : "Error fetching data : " + err};
+                response = {"error" : true,"message" : "Error fetching data : " + err}
             } else {
-                response =  data;
+                response =  data
             }
-            res.json(response);
-        });
-    });
+            res.json(response)
+        })
+    })
 router.route("/vehicle")
-    .post(function(req,res){
-        let db = new vehicle(req.body);
-        let response = {};
-        db.save(function(err){
+    .post((req,res) => {
+        let db = new vehicle(req.body)
+        let response = {}
+        db.save((err) => {
             if(err) {
-                response = {"error" : true,"message" : "Error adding data : " + err};
+                response = {"error" : true,"message" : "Error adding data : " + err}
             } else {
-                response = {"error" : false,"message" : "Data added"};
+                response = {"error" : false,"message" : "Data added"}
             }
-            res.json(response);
-        });
-    });
+            res.json(response)
+        })
+    })
 router.route("/vehicle/:plate/:infotype")
-    .get(function(req,res){
-        let infotype = req.params.infotype;
+    .get((req,res) => {
+        let infotype = req.params.infotype
         if(infotypes.indexOf(infotype)===-1){
-            res.json({"error" : true,"message" : "Error infotype : " + infotype});
+            res.json({"error" : true,"message" : "Error infotype : " + infotype})
         }else{
-            let response = {};
-            if (infotype==="coordinates") infotype = "gps";
-            vehicle.find({"plate" : req.params.plate}, infotype + " capture_at" ,function(err,data){
+            let response = {}
+            if (infotype==="coordinates") infotype = "gps" 
+            vehicle.find({"plate" : req.params.plate}, infotype + " capture_at" ,(err,data) => {
                 if(err) {
-                    response = {"error" : true,"message" : "Error fetching data : " + err};
+                    response = {"error" : true,"message" : "Error fetching data : " + err}
                 } else {
-                    response =  data;
+                    response =  data
                 }
-                res.json(response);
-            });
+                res.json(response)
+            })
         }
-    });
+    })
 
-app.use('/',router);
+app.use('/',router)
 
-app.listen(3000);
-console.log("Listening to PORT 3000");
+export default app
