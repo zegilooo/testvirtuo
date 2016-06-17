@@ -4,15 +4,60 @@
   "description": "testvirtuo",
   "main": "testvirtuo.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "jshint .",
+    "validate": "npm ls"
   },
   "author": "Gilles Eschenbrenner <zegilooo@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "assert": "^1.4.1",
+    "autoprefixer": "^6.3.1",
+    "babel-core": "^6.4.5",
+    "babel-eslint": "^6.0.0",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-2": "^6.5.0",
     "body-parser": "^1.15.1",
+    "colors": "^1.0.3",
     "express": "^4.13.4",
+    "file-loader": "^0.8.5",
+    "hjs-webpack": "^8.0.0",
     "mongoose": "^4.4.20",
     "node-restful": "^0.2.5"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "bson-objectid": "^1.1.4",
+    "chai": "^3.5.0",
+    "faker": "^3.1.0",
+    "groc": "^0.8.0",
+    "iron-node": "^2.2.16",
+    "mocha": "^2.4.5",
+    "nock": "^7.7.3",
+    "nodemon": "^1.9.1",
+    "nyc": "^6.1.1",
+    "precommit-hook": "^3.0.0",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^1.2.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  },
+  "standard": {
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "parser": "babel-eslint",
+    "pre-commit": [
+      "lint",
+      "validate",
+      "test"
+    ]
   }
 }
