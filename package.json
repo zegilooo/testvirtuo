@@ -2,11 +2,18 @@
   "name": "testvirtuo",
   "version": "1.0.0",
   "description": "testvirtuo",
-  "main": "testvirtuo.js",
+  "main": "boot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "jshint .",
-    "validate": "npm ls"
+    "debug": "iron-node boot.js",
+    "dev:server": "nodemon boot.js",
+    "dev:test": "npm run test -- --watch",
+    "doc": "rimraf doc && groc",
+    "lint": "standard --verbose | snazzy",
+    "postinstall": "rimraf .jshintrc .jshintignore && npm run build",
+    "start": "node boot.js",
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register",
+    "test:cov": "nyc --reporter=lcov npm test && rimraf .nyc_output",
+    "validate": "npm test && npm ls"
   },
   "author": "Gilles Eschenbrenner <zegilooo@gmail.com>",
   "license": "ISC",
@@ -52,17 +59,6 @@
     "env": {
       "node": true,
       "mocha": true
-    },
-    "parser": "babel-eslint",
-    "pre-commit": [
-      "lint",
-      "validate",
-      "test"
-    ]
-  },
-  "pre-commit": [
-    "lint",
-    "validate",
-    "test"
-  ]
+    }
+  }
 }

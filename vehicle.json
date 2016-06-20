@@ -1,0 +1,7 @@
+{"_id":{"$oid":"57574cccfa708607499c400a"},"plate":"DY-655-EL","mileage":3360,"fuel":38,"capture_at":{"$date":"2016-05-31T22:55:07.000Z"},"gps":{"latitude":49.7074,"longitude":0.203436},"__v":0}
+{"_id":{"$oid":"57574cdcfa708607499c400b"},"plate":"DY-655-EL","mileage":3370,"fuel":36,"capture_at":{"$date":"2016-05-31T22:35:07.000Z"},"gps":{"latitude":49.7274,"longitude":0.223436},"__v":0}
+{"_id":{"$oid":"57574ce9fa708607499c400c"},"plate":"DY-655-EL","mileage":3390,"fuel":36,"capture_at":{"$date":"2016-05-31T23:35:07.000Z"},"gps":{"latitude":49.7774,"longitude":0.233436},"__v":0}
+{"_id":{"$oid":"57574cf3fa708607499c400d"},"plate":"DY-655-EL","mileage":3400,"fuel":35,"capture_at":{"$date":"2016-05-31T23:45:07.000Z"},"gps":{"latitude":49.7974,"longitude":0.303436},"__v":0}
+{"_id":{"$oid":"57574cfdfa708607499c400e"},"plate":"DY-655-EL","mileage":3400,"fuel":30,"capture_at":{"$date":"2016-05-31T02:00:07.000Z"},"gps":{"latitude":49.8574,"longitude":0.403436},"__v":0}
+{"_id":{"$oid":"5757bc2dd9479aca2be659f9"},"plate":"DY-655-EL","mileage":3400,"fuel":30,"capture_at":{"$date":"2016-05-31T02:00:07.000Z"},"gps":{"latitude":49.8574,"longitude":0.403436},"__v":0}
+{"_id":{"$oid":"5757bd306ca7441d2f3e22c2"},"plate":"DY-655-EL","mileage":3400,"fuel":30,"capture_at":{"$date":"2016-05-31T02:00:07.000Z"},"gps":{"latitude":49.8574,"longitude":0.403436},"__v":0}

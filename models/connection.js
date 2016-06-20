@@ -3,7 +3,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/testvirtu
 
 const db = mongoose.connection
 db.on('error', () => {
-  console.error('✘ CANNOT CONNECT TO mongoDB DATABASE wazaaa!'.red)
+  console.error('✘ CANNOT CONNECT TO mongoDB DATABASE !'.red)
 })
 
 export default function listenToConnectionOpen (onceReady) {
